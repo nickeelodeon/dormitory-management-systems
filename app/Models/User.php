@@ -64,4 +64,10 @@ class User extends Authenticatable
     {
         return $this->role === self::ROLE_STAFF;
     }
+
+    public function resident()
+    {
+        return $this->hasOne(Resident::class);
+    }
+
 }
