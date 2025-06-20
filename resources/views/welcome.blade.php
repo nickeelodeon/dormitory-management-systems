@@ -9,10 +9,31 @@
 <body class="vh-100 m-0">
     <div class="container-fluid h-100">
         <div class="row h-100">
-            <div class="col-md-6 p-0">
-                <img src="{{ asset('images/dorm.jpg') }}" alt="My Photo"
-                     class="w-100 h-100" style="object-fit: cover;">
+            <div class="col-md-6 p-0 position-relative overflow-hidden">
+                <div id="slideshow" style="position: relative; width: 100%; height: 100%;">
+                    <img src="{{ asset('images/dorm1.jpg') }}" class="slideshow-img active" alt="Dorm 1"
+                        style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity 1s ease-in-out; z-index: 1;">
+                    <img src="{{ asset('images/dorm2.jpg') }}" class="slideshow-img" alt="Dorm 2"
+                        style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out;">
+                    <img src="{{ asset('images/dorm3.jpg') }}" class="slideshow-img" alt="Dorm 3"
+                        style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out;">
+                </div>
             </div>
+
+            <script>
+                let currentIndex = 0;
+                const images = document.querySelectorAll('.slideshow-img');
+
+                setInterval(() => {
+                    images[currentIndex].style.opacity = '0';
+                    images[currentIndex].style.zIndex = '0';
+
+                    currentIndex = (currentIndex + 1) % images.length;
+
+                    images[currentIndex].style.opacity = '1';
+                    images[currentIndex].style.zIndex = '1';
+                }, 2000); // Change every 2 seconds
+            </script>
             <div class="col-md-6 d-flex justify-content-center align-items-start pt-5" style="background-color: #213448;">
                 <div class="border rounded p-5 shadow text-center mt-1" style="background-color: #94B4C1;">
                     <img src="{{ asset('images/logo.png') }}" alt="My Photo" class="d-block" style="width: 300PX; height: auto; object-fit: cover; display: block; margin-left: auto; margin-right: auto;">

@@ -40,6 +40,48 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="gender" class="col-md-4 col-form-label text-md-end">{{ __('Gender (Male/Female)') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="gender" type="string" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') }}" required autocomplete="gender">
+
+                                @error('gender')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="age" class="col-md-4 col-form-label text-md-end">{{ __(' Age') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="age" type="integer" class="form-control @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autocomplete="gender">
+
+                                @error('age')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="number" class="col-md-4 col-form-label text-md-end">{{ __(' Number') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="number" type="integer" class="form-control @error('number') is-invalid @enderror" name="number" value="{{ old('number') }}" required autocomplete="gender">
+
+                                @error('number')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
