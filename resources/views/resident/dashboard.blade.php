@@ -10,7 +10,7 @@
         @foreach($rooms as $room)
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm" style="width: 100%;">
-                <img src="{{ asset('images/dorm.jpg') }}" class="card-img-top" alt="Room image">
+                <img src="{{ asset('images/dorm1.jpg') }}" class="card-img-top" alt="Room image">
                 <div class="card-body">
                     <h5 class="card-title">Room {{ $room->room_num }}</h5>
                     <p class="card-text">

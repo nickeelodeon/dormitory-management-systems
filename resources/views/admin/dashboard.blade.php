@@ -31,7 +31,7 @@
                     <td>{{ $resident->payment_status }}</td>
                     <td>{{ $resident->room ? $resident->room->room_num : 'N/A' }}</td>
                     <td><center>
-                        <a href="{{route('admin.editresident')}}" class="btn btn-secondary btn-sm">Edit</a>
+                        <a href="{{route('admin.editresident',['resident' => $resident->id])}}" class="btn btn-secondary btn-sm">Edit</a>
                     </td><center>
                     <td><center>
                     <form method="POST" action="{{ route('admin.delresident', ['resident' => $resident->id]) }}">

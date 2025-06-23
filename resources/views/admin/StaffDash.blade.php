@@ -28,7 +28,7 @@
                     <td>{{ $staff->gender }}</td>
                     <td>{{ $staff->status }}</td>
                     <td><center>
-                        <a href="#" class="btn btn-secondary btn-sm">Edit</a>
+                        <a href="{{route('admin.editstaff', ['staff' => $staff])}}" class="btn btn-secondary btn-sm">Edit</a>
                     </td><center>
                     <td><center>
                     <form method="POST" action="{{ route('admin.delstaff', ['staff' => $staff->id]) }}">

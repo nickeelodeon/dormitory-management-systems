@@ -8,6 +8,7 @@ use App\Models\Staff;
 
 class StaffController extends Controller
 {
+    // Gets all the 
     public function index()
     {
         $staffs = Staff::all();
@@ -60,5 +61,24 @@ class StaffController extends Controller
         return redirect()->route('staff.dashboard');
     }
 
+    public function edit(Staff $staff)
+    {
+        return view('admin.EditStaff', ['staff' => $staff]);
+    }
+
+    public function update(Staff $staff, Request $request)
+    {
+        $data = $request->validate([
+                'full_name' => 'required|string|max:255',
+                'email' => 'required|email|unique:staff,email',
+                'password' => 'required|string|min:6',
+                'number' => 'required|string|max:20',
+                'position' => 'required|string|max:255',
+                'status' => 'required|in:Active,Inactive',
+        ]);
+
+        $staff->update($data);
+        return redirect()->route('admin.staff')->with('success', "Staff Information Updated Successfully");
+    }
 
 }

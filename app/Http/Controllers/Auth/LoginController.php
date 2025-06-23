@@ -41,12 +41,10 @@ class LoginController extends Controller
     protected function redirectTo()
 {
     $user = Auth::user();
-
     return match ($user->role) {
         \App\Models\User::ROLE_ADMIN => '/admin/dashboard',
         \App\Models\User::ROLE_STAFF=> '/staff/dashboard',
         \App\Models\User::ROLE_RESIDENT => '/resident/dashboard',
-        default => '/home',
     };
 }
 }

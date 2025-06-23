@@ -31,9 +31,9 @@
                     <td>{{ $room->status }}</td>
                     <td>{{ $room->rates }}</td>
                     <td>{{ $room->notes }}</td>
-                    <td>
-                        <a href="#" class="btn btn-secondary btn-sm">Edit</a>
-                    </td>
+                    <td><center>
+                        <a href="{{ route('admin.editroom', ['room' => $room]) }}" class="btn btn-secondary btn-sm">Edit</a>
+                    </td><center>
                     <td><center>
                     <form method="POST" action="{{ route('admin.delroom', ['room' => $room->id]) }}">
                         @csrf

@@ -62,7 +62,7 @@ class RoomController extends Controller
     public function generateRoomNumber(int $floor, int $sequence, string $prefix = 'A'): string
     {
         $roomSuffix = str_pad($sequence, 2, '0', STR_PAD_LEFT);
-        return $prefix . $floor . $roomSuffix; // e.g., A101
+        return $prefix . $floor . $roomSuffix;
     }
 
     public function destroy(Room $room)
@@ -75,5 +75,25 @@ class RoomController extends Controller
     {
         $room->delete();
         return redirect()->route('staff.room');
+    }
+
+    public function edit(Room $room)
+    {
+        return view('admin.EditRoom', ['room'=> $room]);
+    }
+
+    public function update(Room $room, Request $request)
+    {
+        $data = $request->validate([
+            'capacity' => 'required|integer|min:1',
+            'current_occupants' => 'nullable|integer|min:0',
+            'gender' => 'required|in:Male,Female',
+            'status' => 'required|in:Available,Occupied,Maintenance',
+            'notes' => 'nullable|string',
+            'rates' => 'required|numeric|min:0',
+        ]);
+
+        $room->update($data);
+        return redirect()->route('admin.room')->with('Success', 'Room Information Updaated Successfully.');
     }
 }

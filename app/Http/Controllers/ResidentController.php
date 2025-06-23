@@ -35,7 +35,23 @@ class ResidentController extends Controller
 
     public function edit(Resident $resident)
     {
-        
+        return view('admin.EditResident', ['resident'=> $resident]);
     }
+
+    public function update(Resident $resident, Request $request)
+    {
+    
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'gender' => ['required', 'in:Male,Female,Other'],
+            'number' => ['required', 'digits_between:7,15'], 
+            'age' => ['required', 'integer', 'min:1'],
+        ]);
+
+        $resident->update($data);
+        return redirect()->route('')->with('success', 'Resident Information Updated Successfully');
+    }   
 
 }
