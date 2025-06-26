@@ -17,14 +17,14 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Admin-only routes j 
+// Admin-only routes 
 Route::middleware(['auth', 'role:' . User::ROLE_ADMIN])->group(function () {
     // Dashboard
     Route::get('/admin/dashboard', [ResidentController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/edit_profile', [AdminController::class, 'edit_profile'])->name('admin.edit');
     Route::delete('/admin/dashboard/resident/{resident}/delete', [ResidentController::class, 'destroy'])->name('admin.delresident');
     Route::get('admin/dashboard/resident/{resident}/edit', [ResidentController::class, 'edit'])->name('admin.editresident');
-    Route::put('admin/dashboard/resident/{resident/update}', [ResidentController::class, 'update'])->name('admin.updateresident');
+    Route::put('admin/dashboard/resident/{resident}/update', [ResidentController::class, 'update'])->name('admin.updateresident');
 
     // Room Management
     Route::get('/admin/dashboard/room', [RoomController::class, 'index'])->name('admin.room');
@@ -55,4 +55,5 @@ Route::middleware(['auth', 'role:' . User::ROLE_STAFF])->group(function () {
 Route::middleware(['auth', 'role:' . User::ROLE_RESIDENT])->group(function () {
     Route::get('/resident/dashboard', [RoomController::class, 'index2'])->name('resident.dashboard');
 });
+
 

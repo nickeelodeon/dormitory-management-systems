@@ -17,7 +17,6 @@
                     <th scope="col">Status</th>
                     <th scope="col">Rates</th>
                     <th scope="col">Notes</th>
-                    <th scope="col" colspan="2">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,15 +29,7 @@
                     <td>{{ $room->floor }}</td>
                     <td>{{ $room->status }}</td>
                     <td>{{ $room->rates }}</td>
-                    <td>{{ $room->notes }}</td>
-                    <td><center>
-                    <form method="POST" action="{{ route('staff.delroom', ['room' => $room->id]) }}">
-                        @csrf
-                        @method('DELETE')
-                        <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                    </form>
-                </td></center>
-                    
+                    <td>{{ $room->notes }}</td>                    
                 </tr>
                 @endforeach
             </tbody>

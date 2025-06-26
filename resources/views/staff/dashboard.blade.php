@@ -16,7 +16,6 @@
                     <th scope="col">Status</th>
                     <th scope="col">Payment Status</th>
                     <th scope="col">Room</th>
-                    <th scope="col" colspan="2">Actions</th>
                 </tr>
             </thead>
             <tbody>

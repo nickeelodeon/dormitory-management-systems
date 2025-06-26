@@ -70,8 +70,6 @@ class StaffController extends Controller
     {
         $data = $request->validate([
                 'full_name' => 'required|string|max:255',
-                'email' => 'required|email|unique:staff,email',
-                'password' => 'required|string|min:6',
                 'number' => 'required|string|max:20',
                 'position' => 'required|string|max:255',
                 'status' => 'required|in:Active,Inactive',

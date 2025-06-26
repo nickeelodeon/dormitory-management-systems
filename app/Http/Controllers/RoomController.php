@@ -34,12 +34,11 @@ class RoomController extends Controller
     public function store(Request $request)
     {
         try {
-            $floor = $request->input('floor');
-            $sequence = $request->input('sequence');
-            $room_num = $this->generateRoomNumber($floor, $sequence);
+            $latestRoom = Room::latest('id')->first();
+            $nextNumber = $latestRoom ? $latestRoom->id + 1 : 1;
+            $room_num = $this->generateRoomNumber($nextNumber);
             $request->merge(['room_num' => $room_num]);
 
-            //Validate Data
             $data = $request->validate([
                 'room_num' => 'required|string|unique:rooms,room_num',
                 'capacity' => 'required|integer|min:1',
@@ -59,10 +58,9 @@ class RoomController extends Controller
         }
     }
 
-    public function generateRoomNumber(int $floor, int $sequence, string $prefix = 'A'): string
+    public function generateRoomNumber(int $number): string
     {
-        $roomSuffix = str_pad($sequence, 2, '0', STR_PAD_LEFT);
-        return $prefix . $floor . $roomSuffix;
+        return 'R' . str_pad($number, 3, '0', STR_PAD_LEFT); // R001, R002, ...
     }
 
     public function destroy(Room $room)

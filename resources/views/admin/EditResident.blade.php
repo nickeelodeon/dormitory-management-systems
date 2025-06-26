@@ -5,6 +5,7 @@
 @section('content')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
+{{-- Display Errors --}}
 @if ($errors->any())
 <div aria-live="polite" aria-atomic="true" class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
     <div class="toast show align-items-center text-bg-danger border-0" role="alert">
@@ -23,11 +24,12 @@
 </div>
 @endif
 
+{{-- Update Resident Information Form --}}
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Edit Resident') }}</div>
+                <div class="card-header">{{ __('Update Resident Information') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.updateresident', ['resident' => $resident]) }}">
@@ -37,14 +39,14 @@
                         <div class="row mb-3">
                             <label for="full_name" class="col-md-4 col-form-label text-md-end">{{ __('Full Name') }}</label>
                             <div class="col-md-6">
-                                <input id="full_name" type="text" class="form-control" name="full_name" value="{{ $resident->full_name }}" required>
+                                <input id="full_name" type="text" class="form-control" name="full_name" value="{{ $resident->full_name }}" required readonly>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ $resident->email }}" required>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ $resident->email }}" required readonly>
                             </div>
                         </div>
 
@@ -93,10 +95,24 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="room_id" class="col-md-4 col-form-label text-md-end">{{ __('Room') }}</label>
+                            <div class="col-md-6">
+                                <select id="room_id" class="form-control" name="room_id" required>
+                                    <option value="">Select Room</option>
+                                    @foreach ($rooms as $room)
+                                        <option value="{{ $room->id }}" {{ $resident->room_id == $room->id ? 'selected' : '' }}>
+                                            {{ $room->room_num }} ({{ $room->status }})
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Update Resident') }}
+                                    {{ __('Update Information') }}
                                 </button>
                             </div>
                         </div>

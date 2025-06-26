@@ -25,7 +25,7 @@
                     <td>{{ $staff->email }}</td>
                     <td>{{ $staff->number }}</td>
                     <td>{{ $staff->gender }}</td>
-                    <td>{{ $staff->gender }}</td>
+                    <td>{{ $staff->position }}</td>
                     <td>{{ $staff->status }}</td>
                     <td><center>
                         <a href="{{route('admin.editstaff', ['staff' => $staff])}}" class="btn btn-secondary btn-sm">Edit</a>

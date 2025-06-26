@@ -5,7 +5,7 @@
 @section('content')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
-
+{{-- Display Errors --}}
 @if ($errors->any())
 <div aria-live="polite" aria-atomic="true" class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
     <div class="toast show align-items-center text-bg-danger border-0" role="alert">
@@ -24,11 +24,12 @@
 </div>
 @endif
 
+{{-- Update Room Information Form --}}
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Add Room') }}</div>
+                <div class="card-header">{{ __('Update Room Information') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.updateroom', ['room' => $room]) }}">
@@ -82,11 +83,12 @@
                                 <input id="rates" type="number" step="0.01" class="form-control" value="{{$room->rates}}" name="rates" required>
                             </div>
                         </div>
+                        
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Update Room') }}
+                                    {{ __('Update Information') }}
                                 </button>
                             </div>
                         </div>

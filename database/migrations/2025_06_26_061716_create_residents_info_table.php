@@ -23,6 +23,8 @@ return new class extends Migration
             $table->enum('payment_status', ['Paid', 'Not Paid'])->default('Paid');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('room_id')->nullable();
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
             $table->timestamps();
         });
     }

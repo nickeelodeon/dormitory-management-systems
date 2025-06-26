@@ -4,6 +4,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
+{{-- Display Errors --}}
 @if ($errors->any())
 <div aria-live="polite" aria-atomic="true" class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
     <div class="toast show align-items-center text-bg-danger border-0" role="alert">
@@ -22,11 +23,13 @@
 </div>
 @endif
 
+
+{{-- Update Resident Information Form --}}
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Add Staff') }}</div>
+                <div class="card-header">{{ __('Update Staff Information') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.updatestaff', ['staff' =>  $staff]) }}">
@@ -86,7 +89,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Add Staff') }}
+                                    {{ __('Update Information') }}
                                 </button>
                             </div>
                         </div>

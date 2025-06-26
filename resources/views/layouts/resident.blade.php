@@ -20,7 +20,7 @@
     <div id="app" class="d-flex">
         <!-- Sidebar -->
         <div class="flex-shrink-0 p-3 bg-white" style="width: 280px; min-height: 100vh;">
-            <a href="{{ url('/') }}" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+            <a href="{{ url('/resident/dashboard') }}" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
                 <img src="{{ asset('images/logo.png') }}" alt="Logo" style="width: 150px;">
             </a>
             <ul class="list-unstyled ps-0">
@@ -36,7 +36,7 @@
                 </li>
                 <li class="border-top my-3"></li>
                 <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false" style="font-weight:bolder">
                         Account
                     </button>
                     <div class="collapse" id="account-collapse">

@@ -11,7 +11,7 @@ class Room extends Model
         'room_num',
         'capacity',
         'current_occupants',
-        'gender_type',
+        'gender',
         'floor',
         'status',
         'notes',
